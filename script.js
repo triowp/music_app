@@ -183,5 +183,7 @@ searchInput.addEventListener('keypress', (e) => {
 
 // Автозапуск при старте страницы (для проверки)
 window.addEventListener('load', () => {
-    searchMusic('Billie Eilish'); 
+    // Автоматически показываем популярные треки при загрузке
+    const defaultSearch = 'The Weeknd';
+    searchMusic(defaultSearch); 
 });

@@ -1,10 +1,14 @@
 /* Общие стили */
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #121212;
     color: white;
-    overflow: hidden; /* Чтобы не было двойных скроллов */
+    overflow: hidden;
 }
 
 .container {
@@ -17,28 +21,130 @@ body {
     width: 240px;
     background-color: #000;
     padding: 20px;
+    border-right: 1px solid #282828;
 }
-.logo { font-size: 24px; font-weight: bold; margin-bottom: 30px; color: #1db954; }
-.nav li { list-style: none; padding: 10px 0; color: #b3b3b3; cursor: pointer; transition: 0.3s; }
-.nav li:hover, .nav li.active { color: white; }
-.nav li i { margin-right: 10px; width: 20px; }
+
+.logo { 
+    font-size: 24px; 
+    font-weight: bold; 
+    margin-bottom: 30px; 
+    color: #1db954;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav {
+    padding: 0;
+    margin: 0;
+}
+
+.nav li { 
+    list-style: none; 
+    padding: 12px 15px; 
+    color: #b3b3b3; 
+    cursor: pointer; 
+    transition: all 0.3s ease;
+    border-radius: 6px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+}
+
+.nav li:hover { 
+    color: white;
+    background-color: #282828;
+}
+
+.nav li.active { 
+    color: white;
+    background-color: #282828;
+}
+
+.nav li i { 
+    margin-right: 12px; 
+    width: 20px;
+    text-align: center;
+}
 
 /* Основной контент */
 main {
     flex: 1;
-    background: linear-gradient(180deg, #222 0%, #121212 100%);
-    padding: 20px;
+    background: linear-gradient(180deg, #1a1a1a 0%, #121212 100%);
+    padding: 30px;
     overflow-y: auto;
 }
 
-.search-box { display: flex; gap: 10px; margin-bottom: 30px; }
-.search-box input {
-    flex: 1; padding: 12px 20px; border-radius: 50px; border: none; outline: none;
-    font-size: 16px;
+main::-webkit-scrollbar {
+    width: 12px;
 }
+
+main::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+main::-webkit-scrollbar-thumb {
+    background: #282828;
+    border-radius: 6px;
+}
+
+main::-webkit-scrollbar-thumb:hover {
+    background: #3e3e3e;
+}
+
+.content-area h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.search-box { 
+    display: flex; 
+    gap: 10px; 
+    margin-bottom: 30px;
+    max-width: 600px;
+}
+
+.search-box input {
+    flex: 1; 
+    padding: 14px 24px; 
+    border-radius: 50px; 
+    border: none; 
+    outline: none;
+    font-size: 16px;
+    background-color: #242424;
+    color: white;
+    transition: background-color 0.3s;
+}
+
+.search-box input::placeholder {
+    color: #999;
+}
+
+.search-box input:focus {
+    background-color: #2a2a2a;
+}
+
 .search-box button {
-    padding: 12px 25px; border-radius: 50px; border: none; background: #1db954;
-    color: white; cursor: pointer; font-size: 16px;
+    padding: 14px 28px; 
+    border-radius: 50px; 
+    border: none; 
+    background: #1db954;
+    color: white; 
+    cursor: pointer; 
+    font-size: 16px;
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+
+.search-box button:hover {
+    background: #1ed760;
+    transform: scale(1.05);
+}
+
+.search-box button:active {
+    transform: scale(0.98);
 }
 
 /* Сетка карточек */
@@ -53,12 +159,48 @@ main {
     padding: 16px;
     border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
-.card:hover { background-color: #282828; }
-.card img { width: 100%; border-radius: 4px; margin-bottom: 10px; object-fit: cover; aspect-ratio: 1/1; }
-.card h3 { font-size: 16px; margin: 0 0 5px 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.card p { font-size: 14px; color: #b3b3b3; margin: 0; }
+
+.card:hover { 
+    background-color: #282828;
+    transform: translateY(-8px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+.card img { 
+    width: 100%; 
+    border-radius: 6px; 
+    margin-bottom: 12px; 
+    object-fit: cover; 
+    aspect-ratio: 1/1;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.card:hover img {
+    transform: scale(1.05);
+}
+
+.card h3 { 
+    font-size: 16px; 
+    margin: 0 0 6px 0; 
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis;
+    font-weight: 600;
+}
+
+.card p { 
+    font-size: 14px; 
+    color: #b3b3b3; 
+    margin: 0;
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis;
+}
 
 /* --- СТИЛИ ПЛЕЕРА --- */
 .player {
@@ -75,10 +217,44 @@ main {
 }
 
 /* Левая часть (Инфо) */
-.track-info { display: flex; align-items: center; width: 30%; }
-.track-info img { width: 56px; height: 56px; margin-right: 15px; border-radius: 4px; }
-.track-info h4 { margin: 0; font-size: 14px; color: white; }
-.track-info p { margin: 0; font-size: 12px; color: #b3b3b3; }
+.track-info { 
+    display: flex; 
+    align-items: center; 
+    width: 30%; 
+    min-width: 180px;
+}
+
+.track-info img { 
+    width: 56px; 
+    height: 56px; 
+    margin-right: 15px; 
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.track-info .text {
+    flex: 1;
+    min-width: 0;
+}
+
+.track-info h4 { 
+    margin: 0 0 4px 0; 
+    font-size: 14px; 
+    color: white;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 600;
+}
+
+.track-info p { 
+    margin: 0; 
+    font-size: 12px; 
+    color: #b3b3b3;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 
 /* Центральная часть (Контролы + Прогресс) */
 .player-center {
@@ -89,35 +265,269 @@ main {
 }
 
 .controls { display: flex; align-items: center; margin-bottom: 5px; }
-.controls button { background: none; border: none; color: #b3b3b3; cursor: pointer; font-size: 16px; margin: 0 10px; transition: 0.2s; }
-.controls button:hover { color: white; }
-.play-btn { 
-    background-color: white !important; color: black !important; 
-    border-radius: 50%; width: 32px; height: 32px; 
-    display: flex; align-items: center; justify-content: center; 
+.controls button { 
+    background: none; 
+    border: none; 
+    color: #b3b3b3; 
+    cursor: pointer; 
+    font-size: 18px; 
+    margin: 0 12px; 
+    transition: all 0.2s ease;
+    padding: 8px;
 }
-.play-btn:hover { transform: scale(1.05); }
+
+.controls button:hover { 
+    color: white;
+    transform: scale(1.1);
+}
+
+.controls button:active {
+    transform: scale(0.95);
+}
+
+.play-btn { 
+    background-color: white !important; 
+    color: black !important; 
+    border-radius: 50%; 
+    width: 36px; 
+    height: 36px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(255, 255, 255, 0.2);
+}
+
+.play-btn:hover { 
+    transform: scale(1.08);
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.3);
+}
+
+.play-btn:active {
+    transform: scale(1.02);
+}
 
 /* Прогресс бар */
 .progress-container { display: flex; align-items: center; width: 100%; gap: 10px; font-size: 11px; color: #b3b3b3; }
 #progressBar {
     flex: 1;
     -webkit-appearance: none;
-    height: 4px;
+    appearance: none;
+    height: 5px;
     background: #535353;
-    border-radius: 2px;
+    border-radius: 3px;
     cursor: pointer;
+    transition: height 0.2s;
 }
+
+#progressBar:hover {
+    height: 6px;
+}
+
 #progressBar::-webkit-slider-thumb {
     -webkit-appearance: none;
-    width: 12px; height: 12px;
+    width: 14px; 
+    height: 14px;
     background: white;
     border-radius: 50%;
     cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s;
+}
+
+#progressBar::-webkit-slider-thumb:hover {
+    width: 16px;
+    height: 16px;
+}
+
+#progressBar::-moz-range-thumb {
+    width: 14px; 
+    height: 14px;
+    background: white;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 /* Правая часть (Громкость) */
 .volume-controls { display: flex; align-items: center; width: 30%; justify-content: flex-end; }
 .volume-controls i { color: #b3b3b3; margin-right: 10px; font-size: 14px; }
-#volumeSlider { width: 100px; -webkit-appearance: none; height: 4px; background: #535353; border-radius: 2px; }
-#volumeSlider::-webkit-slider-thumb { -webkit-appearance: none; width: 12px; height: 12px; background: white; border-radius: 50%; }
+#volumeSlider { 
+    width: 100px; 
+    -webkit-appearance: none;
+    appearance: none;
+    height: 5px; 
+    background: #535353; 
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+#volumeSlider::-webkit-slider-thumb { 
+    -webkit-appearance: none;
+    appearance: none;
+    width: 12px; 
+    height: 12px; 
+    background: white; 
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+#volumeSlider::-moz-range-thumb {
+    width: 12px; 
+    height: 12px; 
+    background: white; 
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* === АДАПТИВНЫЕ СТИЛИ ДЛЯ МОБИЛЬНЫХ УСТРОЙСТВ === */
+
+@media (max-width: 768px) {
+    /* Скрываем сайдбар на мобильных */
+    .sidebar {
+        display: none;
+    }
+
+    /* Контейнер занимает всю ширину */
+    .container {
+        height: calc(100vh - 120px); /* Больше места под плеер */
+    }
+
+    /* Основной контент */
+    main {
+        padding: 15px 10px;
+    }
+
+    /* Поиск */
+    .search-box {
+        flex-direction: column;
+        gap: 8px;
+        margin-bottom: 20px;
+    }
+
+    .search-box input {
+        padding: 10px 15px;
+        font-size: 14px;
+    }
+
+    .search-box button {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+
+    /* Сетка карточек - 2 колонки на телефоне */
+    .cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .card {
+        padding: 12px;
+    }
+
+    .card h3 {
+        font-size: 14px;
+    }
+
+    .card p {
+        font-size: 12px;
+    }
+
+    /* Плеер */
+    .player {
+        height: 120px;
+        padding: 10px 15px;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    /* Инфо о треке - на всю ширину сверху */
+    .track-info {
+        width: 100%;
+        margin-bottom: 8px;
+    }
+
+    .track-info img {
+        width: 45px;
+        height: 45px;
+        margin-right: 10px;
+    }
+
+    .track-info h4 {
+        font-size: 13px;
+    }
+
+    .track-info p {
+        font-size: 11px;
+    }
+
+    /* Контролы в центре */
+    .player-center {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+
+    .controls {
+        margin-bottom: 8px;
+    }
+
+    .controls button {
+        font-size: 14px;
+        margin: 0 8px;
+    }
+
+    .play-btn {
+        width: 36px;
+        height: 36px;
+    }
+
+    .progress-container {
+        font-size: 10px;
+        gap: 8px;
+    }
+
+    #progressBar {
+        height: 3px;
+    }
+
+    /* Громкость - скрываем на совсем маленьких экранах */
+    .volume-controls {
+        display: none;
+    }
+}
+
+/* Для очень маленьких экранов */
+@media (max-width: 480px) {
+    .cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .card {
+        padding: 10px;
+    }
+
+    .card h3 {
+        font-size: 13px;
+    }
+
+    .player {
+        height: 110px;
+    }
+}
+
+/* Для планшетов */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .sidebar {
+        width: 200px;
+        padding: 15px;
+    }
+
+    .cards-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 15px;
+    }
+}
